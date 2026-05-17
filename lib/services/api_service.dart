@@ -3,11 +3,11 @@ import 'package:http/http.dart' as http;
 import '../models/recipe.dart';
 
 class ApiService {
-  static const String baseUrl = 'https://dummyjson.com/recipes';
+  static const String dummyUrl = 'https://dummyjson.com/recipes';
 
   // GET RECIPES
   static Future<List<Recipe>> fetchRecipes() async {
-    final response = await http.get(Uri.parse(baseUrl));
+    final response = await http.get(Uri.parse(dummyUrl));
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
@@ -25,7 +25,7 @@ class ApiService {
   // ADD RECIPE
   static Future<void> addRecipe(Recipe recipe) async {
     final response = await http.post(
-      Uri.parse('$baseUrl/add'),
+      Uri.parse('$dummyUrl/add'),
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode(recipe.toJson()),
     );
@@ -42,7 +42,7 @@ class ApiService {
       Recipe recipe,
       ) async {
     final response = await http.put(
-      Uri.parse('$baseUrl/$id'),
+      Uri.parse('$dummyUrl/$id'),
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode(recipe.toJson()),
     );
@@ -55,7 +55,7 @@ class ApiService {
   // DELETE RECIPE
   static Future<void> deleteRecipe(int id) async {
     final response = await http.delete(
-      Uri.parse('$baseUrl/$id'),
+      Uri.parse('$dummyUrl/$id'),
     );
 
     if (response.statusCode != 200) {
@@ -66,9 +66,9 @@ class ApiService {
   // PATCH RECIPE
   static Future<void> patchRecipe(int id, Map<String, dynamic> updates) async {
     final response = await http.patch(
-      Uri.parse('$baseUrl/$id'),
+      Uri.parse('$dummyUrl/$id'),
       headers: {'Content-Type': 'application/json'},
-      
+
       body: jsonEncode(updates),
     );
 
