@@ -68,7 +68,8 @@ class ApiService {
     final response = await http.patch(
       Uri.parse('$baseUrl/$id'),
       headers: {'Content-Type': 'application/json'},
-      body: jsonEncode(updates), // Only send the fields to update
+      
+      body: jsonEncode(updates),
     );
 
     if (response.statusCode != 200) {
