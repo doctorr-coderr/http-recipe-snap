@@ -292,16 +292,11 @@ void patchRecipeDialog(Recipe recipe, int index) {
                                     margin: const EdgeInsets.only(bottom: 16),
                                     decoration: BoxDecoration(
                                       border: Border.all(color: Colors.grey.shade300),
-                                      borderRadius: BorderRadius.circular(12),
                                     ),
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         ClipRRect(
-                                          borderRadius: const BorderRadius.only(
-                                            topLeft: Radius.circular(12),
-                                            topRight: Radius.circular(12),
-                                          ),
                                           child: Image.network(
                                             recipe.image,
                                             height: 250,
